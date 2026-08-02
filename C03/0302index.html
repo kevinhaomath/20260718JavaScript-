@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断2010年2月份的天数</title>
+</head>
+<body>
+<script type="text/javascript">
+    var year = 2010;
+    var month=0;
+    if((year%4==0 && year%100!=0)||year%400==0){
+        month =29;
+    }else{
+        month=28;
+    }
+alert("2010年2月份的天数为"+month+"天");
+</script>
+</body>
+</html>
