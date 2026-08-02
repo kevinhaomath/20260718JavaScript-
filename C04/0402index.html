@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算购物车中的商品总价</title>
+    <script type="text/javascript">
+        function price(unitPirce,number){
+            var totalPrice = unitPirce*number;
+            return totalPrice;
+        }
+        var phone = price(5000,2);
+        var computer = price(4000,10);
+        var total=phone+computer;
+        alert("购物车中商品总价："+total+"元");
+    </script>
+</head>
+<body>
+</body>
+</html>

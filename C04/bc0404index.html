@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    function getMinValue(num1,num2,num3){
+        var minValue = num1;
+        if(num2<minValue){
+            minValue=num2;
+        }
+        if(num3<minValue){
+            minValue=num3;
+        }
+        return minValue;
+    }
+    alert("三个中最小的数是："+getMinValue(12,20,25));
+</script>
+</body>
+</html>
