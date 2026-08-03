@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+function getAgeGroup(age){
+    var ageGroup = "";
+    if(age>0 && age<=6){
+        ageGroup = "童年";
+    }else if(age>=7 && age<=17){
+        ageGroup = "少年";
+    }else if(age>=18 && age<=40){
+        ageGroup = "青年";
+    }else if(age>=41 && age<=65){
+        ageGroup = "中年";
+    }else{
+        ageGroup = "老年";
+    }
+    return ageGroup;
+}
+var result = getAgeGroup(20);
+alert("20岁正处在"+result+"时期!")
+</script>
+</body>
+</html>

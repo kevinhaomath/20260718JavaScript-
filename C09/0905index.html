@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按A键对页面进行刷新</title>
+</head>
+<body>
+<script type="text/javascript">
+function Refurbish(event){
+    if(event.keyCode == 65){
+        location.reload();
+    }
+}
+document.onkeydown = Refurbish;
+</script>
+<img src="/C09/1.jpg" width="805" height="554" alt="刷新">
+</body>
+</html>

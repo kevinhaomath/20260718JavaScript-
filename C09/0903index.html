@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标移入移出时改变图片的透明度</title>
+</head>
+<body>
+<script type="text/javascript">
+    function visible(cursor,i){
+        if(i==0)
+        cursor.style.opacity=1;
+        else
+        cursor.style.opacity=0.5;
+    }
+</script>
+<img src="/C09/Temp.jpg" onmouseover="visible(this,1)" onmouseout="visible(this,0)">
+</body>
+</html>

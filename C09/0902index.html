@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用事件制作超链接文本</title>
+</head>
+<body>
+<p id="p1" style="color: #AA9900;cursor: pointer;" onmousedown="mousedown()" onmouseup="mouseup()"><u>零基础学JavaScript</u></p>
+<script type="text/javascript">
+    function mousedown(){
+        var obj = document.getElementById('p1');
+        obj.style.color='#0022AA';
+    }
+    function mouseup(){
+        var obj=document.getElementById('p1');
+        obj.style.color='#AA9900';
+    }
+</script>
+</body>
+</html>
