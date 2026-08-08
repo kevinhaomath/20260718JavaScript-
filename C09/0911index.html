@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示选择的文本</title>
+</head>
+<body>
+<form name="form1" method="post" action="">
+    <input name="textfield" type="text" onselect="return Tselect()" value="hello!JavaScript">
+</form>
+<script type="text/javascript">
+function Tselect(){
+	var txt=window.getSelection();
+	if (txt=="hello!"){
+		alert("您当前所选择的内容为："+txt);
+	}
+}
+</script>
+</body>
+</html>

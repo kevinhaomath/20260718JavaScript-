@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    function change(){
+        var obj = document.getElementById('welcome');
+        obj.style.color="#000FF";
+        obj.style.fontSize="24px";
+    }
+    function resume(){
+        var obj = document.getElementById('welcome');
+        obj.style.color="#000000";
+        obj.style.fontSize="16px";
+    }
+
+</script>
+<span id="welcome" style="font-size: 18px;" onmouseover="change()" onmouseout="resume()">欢迎购买明日科技图书</span>
+</body>
+</html>

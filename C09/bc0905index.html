@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form name="form1">
+    用户名：<input type="text" onfocus="txtfocus(event)" onblur="txtblur(evnet)"><br />
+    密码：<input type="text" onfocus="txtfocus(event)" onblur="txtblur(event)"><br />
+</form>
+<script type="text/javascript">
+    function txtfocus(event){
+        var obj=event.target;
+        obj.style.border="3px solid #FF0000";
+    }
+    function txtblur(event){
+        var obj=event.target;
+        obj.style.border="";
+    }
+
+</script>
+</body>
+</html>

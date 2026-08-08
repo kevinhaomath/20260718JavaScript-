@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    function reseForm(){
+        alert("表单已重置！")
+        form.username.focus();
+    }
+</script>
+
+<form name="form" onreset="reseForm">
+    <div class="title"> 用户登录</div>
+    <div class="one">
+        <label>用户名：</label>
+        <input type="text" name="username">
+        <strong class="red">*</strong>
+        <span id="showuer"></span>
+    </div>
+    <div class="one">
+        <label>密码：</label>
+        <input type="password" name="pwd">
+        <strong class="red">*</strong>
+        <span id="showpwd"></span>
+    </div>
+    <div class="two">
+        <input type="button" id="send" value="登录">
+        <input type="reset" id="res" value="重置">
+    </div>
+</form>
+</body>
+</html>

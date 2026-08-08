@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" id="btn" value="关灯">
+<script type="text/javascript">
+    var btn = document.getElementById("btn");
+    btn.onclick=function(){
+        if(this.value=="关灯"){
+            document.body.style.backgroundColor="black";
+            this.value="开灯";
+        }else{
+            document.body.style.backgroundColor="white";
+            this.value="关灯";
+        }
+    }
+
+</script>
+    
+</body>
+</html>

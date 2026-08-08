@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>来回拖动图片</title>
+<link href="/C09/style.css" type="text/css" rel="stylesheet" >
+</head>
+<body>
+<div class="mr-cont">
+    <h1>拖放图片</h1>
+    <div id="left" ondragover="dragover(event)" ondrop="drop(event)">
+        <img src="/C09/face.png" id="pic">
+    </div>
+    <div id="right" ondragover="dragover(event)" ondrop="drop(event)"></div>
+    <div id="right" ondragover="dragover(event)" ondrop="drop(event)"></div>
+</div>
+<script type="text/javascript">
+    var pic = document.getElementById("pic");
+    function dragover(e){
+        e.preventDefault();
+    }
+    function drop(e){
+        e.preventDefault();
+        e.target.appendChild(pic);
+    }
+</script>
+</body>
+</html>
