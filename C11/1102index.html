@@ -1,0 +1,73 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                     <!-- 声明页面语言为英语 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <title>遍历文档树</title>                                         <!-- 设置页面标题，显示在浏览器标签页上 -->
+</head>                                                              <!-- 头部区域结束 -->
+<body>                                                               <!-- 页面主体区域开始 -->
+    <h3 id="h1">三号标题</h3>                                        <!-- 三级标题标签，ID为 h1 -->
+    <b>加粗内容</b>                                                  <!-- 加粗文本标签 -->
+    <form name="frm" action="#" method="get">                        <!-- 创建表单，名称为 frm，用于显示节点信息 -->
+        节点名称：<input type="text" id="na"><br>                      <!-- 文本框，ID为 na，用于显示节点名称 -->
+        节点类型：<input type="text" id="ty"><br>                      <!-- 文本框，ID为 ty，用于显示节点类型 -->
+        节点的值：<input type="text" id="va"><br>                      <!-- 文本框，ID为 va，用于显示节点值 -->
+        <input type="button" value="父节点" onclick="txt=nodeS(txt,'parent');"> <!-- 按钮，点击获取当前节点的父节点 -->
+        <input type="button" value="第一个子节点" onclick="txt=nodeS(txt,'firstChild');"> <!-- 按钮，点击获取当前节点的第一个子节点 -->
+        <input type="button" value="最后一个子节点" onclick="txt=nodeS(txt,'lastChild');"><br> <!-- 按钮，点击获取当前节点的最后一个子节点 -->
+        <input name="button" type="button" onclick="txt=nodeS(txt,'previousSibling');" value="前一个兄弟节点"> <!-- 按钮，点击获取当前节点的前一个兄弟节点 -->
+        <input type="button" value="后一个兄弟节点" onclick="txt=nodeS(txt,'nextSibling');"> <!-- 按钮，点击获取当前节点的后一个兄弟节点 -->
+        <input type="button" value="返回根节点" onclick="txt=document.documentElement;txtUpdate(txt);"> <!-- 按钮，点击返回根节点（html元素） -->
+    </form>                                                          <!-- 表单结束 -->
+    <script type="text/javascript">
+        function txtUpdate(txt){                                     // 定义 txtUpdate 函数，用于更新表单中显示的节点信息
+            window.document.frm.na.value = txt.nodeName;             // 将节点的 nodeName 赋值给表单中 id 为 na 的文本框
+            window.document.frm.ty.value = txt.nodeType;             // 将节点的 nodeType 赋值给表单中 id 为 ty 的文本框
+            window.document.frm.va.value = txt.nodeValue;            // 将节点的 nodeValue 赋值给表单中 id 为 va 的文本框
+        }                                                            // txtUpdate 函数定义结束
+
+        function nodeS(txt, nodeName){                               // 定义 nodeS 函数，根据传入的节点关系名获取对应的节点
+            switch(nodeName){                                        // switch 分支判断，根据 nodeName 执行不同操作
+                case "previousSibling":                              // 获取前一个兄弟节点
+                    if(txt.previousSibling){                         // 判断是否存在前一个兄弟节点
+                        txt = txt.previousSibling;                   // 将 txt 更新为前一个兄弟节点
+                    }else                                            // 如果没有前一个兄弟节点
+                        alert("无兄弟节点");                          // 弹出提示框提示无兄弟节点
+                    break;                                           // 跳出 switch 分支
+
+                case "nextSibling":                                  // 获取后一个兄弟节点
+                    if(txt.nextSibling){                             // 判断是否存在后一个兄弟节点
+                        txt = txt.nextSibling;                       // 将 txt 更新为后一个兄弟节点
+                    }else                                            // 如果没有后一个兄弟节点
+                        alert("无兄弟节点");                          // 弹出提示框提示无兄弟节点
+                    break;                                           // 跳出 switch 分支
+
+                case "parent":                                       // 获取父节点
+                    if(txt.parentNode){                              // 判断是否存在父节点
+                        txt = txt.parentNode;                        // 将 txt 更新为父节点
+                    }else                                            // 如果没有父节点
+                        alert("无父节点");                            // 弹出提示框提示无父节点
+                    break;                                           // 跳出 switch 分支
+
+                case "firstChild":                                   // 获取第一个子节点
+                    if(txt.hasChildNodes()){                         // 判断是否存在子节点
+                        txt = txt.firstChild;                        // 将 txt 更新为第一个子节点
+                    }else                                            // 如果没有子节点
+                        alert("无子节点");                            // 弹出提示框提示无子节点
+                    break;                                           // 跳出 switch 分支
+
+                case "lastChild":                                    // 获取最后一个子节点
+                    if(txt.hasChildNodes()){                         // 判断是否存在子节点
+                        txt = txt.lastChild;                         // 将 txt 更新为最后一个子节点
+                    }else                                            // 如果没有子节点
+                        alert("无子节点");                            // 弹出提示框提示无子节点
+                    break;                                           // 跳出 switch 分支
+            }                                                        // switch 分支结束
+            txtUpdate(txt);                                          // 调用 txtUpdate 函数更新表单显示
+            return txt;                                              // 返回更新后的节点对象
+        }                                                            // nodeS 函数定义结束
+
+        var txt = document.documentElement;                          // 定义变量 txt，初始化为文档根节点 html
+        txtUpdate(txt);                                              // 调用 txtUpdate 函数，初始显示根节点信息
+    </script>
+</body>                                                              <!-- 页面主体区域结束 -->
+</html>                                                              <!-- 整个HTML文档结束 -->

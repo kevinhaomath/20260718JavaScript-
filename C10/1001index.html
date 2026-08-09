@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景颜色和字体颜色自动变色</title>
+</head>
+<body>
+背景自动变色 
+<script type="text/javascript">
+var Arraycolor = new Array("#00FF66","#FFFF99","#99CCFF","#FFCCFF","#FFCC99","#00FFFF","#FFFF00","#FFCC00","#FF00FF");
+var n = 0;
+function turncolors(){
+    n++;
+    if ((n==Arraycolor.length-1)) n=0;
+    document.body.style.backgroundColor=Arraycolor[n];
+    document.body.style.color=Arraycolor[n-1];
+    setTimeout("turncolors()",1000);
+}
+turncolors();
+</script>
+</body>
+</html>

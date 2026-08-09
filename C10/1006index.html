@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>打开新文档</title>
+</head>
+<body>
+<input type="button" value="打开一个新文档" onclick="oc()">
+
+<script>
+function oc() {
+    var win = window.open('', '_blank');
+    win.document.write('<h1>新窗口</h1>');
+    win.document.write('<img src=\'https://picsum.photos/400/300\'>');
+    win.document.write('<p>这里是写入的新内容</p>');
+    win.document.close();
+}
+</script>
+</body>
+</html>

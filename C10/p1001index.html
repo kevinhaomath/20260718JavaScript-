@@ -1,0 +1,50 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                     <!-- 声明页面语言为英语 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>Document</title>                                                     <!-- 设置页面标题，显示在浏览器标签页上 -->
+    <style>                                                                     /* 内部CSS样式定义开始 */
+        .top{                                                                   /* 定义类名为 top 的样式，用于标题区域 */
+            width: 400px;                                                       /* 设置宽度为400像素 */
+            height: 80px;                                                       /* 设置高度为80像素 */
+            line-height: 80px;                                                  /* 设置行高为80像素，使文字垂直居中 */
+            font-size: 36px;                                                    /* 设置字体大小为36像素 */
+            text-align: center;                                                 /* 设置文本水平居中 */
+        }                                                                       /* top 样式定义结束 */
+        .content{                                                               /* 定义类名为 content 的样式，用于正文内容区域 */
+            width: 400px;                                                       /* 设置宽度为400像素 */
+            line-height: 40px;                                                  /* 设置行高为40像素，增加行间距 */
+            font-size: 24px;                                                    /* 设置字体大小为24像素 */
+            text-align: center;                                                 /* 设置文本水平居中 */
+        }                                                                       /* content 样式定义结束 */
+    </style>                                                                    
+</head>                                                                         <!-- 头部区域结束 -->
+<body>                                                                          <!-- 页面主体区域开始 -->
+<script type="text/javascript">                                                 // JavaScript脚本开始
+    function change(obj){                                                       // 定义 change 函数，参数 obj 为下拉列表对象
+        var colorArr = obj.value.split(" ");                                    // 获取选中值，用空格拆分为数组，分别对应背景色和文字色
+        document.body.style.backgroundColor=colorArr[0];                        // 将数组第一个元素设置为页面背景色
+        document.body.style.color=colorArr[1];                                  // 将数组第二个元素设置为页面文字颜色
+    }                                                                           // change 函数定义结束
+</script>                                                                       
+<form name="form">                                                              <!-- 创建表单，用于包含下拉列表控件 -->
+    <select name="theme" onchange="change(this)">                               <!-- 创建下拉列表，选项改变时触发 change 函数 -->
+        <option value="gray lightgreen">灰色主题</option>                       <!-- 选项1：背景灰色，文字浅绿色 -->
+        <option value="black yellow">黑色主题</option>                          <!-- 选项2：背景黑色，文字黄色 -->
+        <option value="green white">绿色主题</option>                           <!-- 选项3：背景绿色，文字白色 -->
+    </select>                                                                   <!-- 下拉列表结束 -->
+</form>                                                                         <!-- 表单结束 -->
+<div class="top">                                                               <!-- 使用 top 类样式显示标题 -->
+    李白《行路难·其一》                                                         <!-- 标题文字 -->
+</div>                                                                          <!-- 标题区域结束 -->
+<div class="content">                                                           <!-- 使用 content 类样式显示正文 -->
+    金樽清酒斗十千，玉盘珍羞直万钱。                                             <!-- 正文第一句 -->
+    停杯投箸不能食，拔剑四顾心茫然。                                             <!-- 正文第二句 -->
+    欲渡黄河冰塞川，将登太行雪满山。                                             <!-- 正文第三句 -->
+    闲来垂钓碧溪上，忽复乘舟梦日边。                                             <!-- 正文第四句 -->
+    行路难！行路难！多歧路，今安在？                                             <!-- 正文第五句 -->
+    长风破浪会有时，直挂云帆济沧海。                                             <!-- 正文第六句 -->
+</div>                                                                          <!-- 正文区域结束 -->
+</body>                                                                         <!-- 页面主体区域结束 -->
+</html>                                                                         <!-- 整个HTML文档结束 -->

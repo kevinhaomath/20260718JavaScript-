@@ -1,0 +1,47 @@
+<!DOCTYPE html>                                                             <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                            <!-- 声明页面语言为英语 -->
+<head>                                                                      <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                                  <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>Document</title>                                                 <!-- 设置页面标题，显示在浏览器标签页上 -->
+    <style>                                                                 /* 内部CSS样式定义开始 */
+        .box{                                                               /* 定义类名为 box 的样式，用于对话框容器 */
+            display: none;                                                  /* 初始状态为隐藏，不占据页面空间 */
+            width: 260px;                                                   /* 设置宽度为260像素 */
+            height: 260px;                                                  /* 设置高度为260像素 */
+            text-align: center;                                             /* 设置内容水平居中 */
+            border: 1px solid blue;                                          /* 设置蓝色实线边框，宽度为1像素 */
+            position: relative;                                             /* 设置相对定位，作为子元素绝对定位的参考点 */
+        }                                                                   /* box 样式定义结束 */
+        .box img{                                                           /* 定义 box 内部 img 元素的样式 */
+            margin-top: 30px;                                               /* 设置图片上边距为30像素，垂直居中偏移 */
+        }                                                                   /* box img 样式定义结束 */
+        .box span{                                                          /* 定义 box 内部 span 元素的样式（关闭按钮） */
+            width: 52px;                                                    /* 设置宽度为52像素 */
+            height: 16px;                                                   /* 设置高度为16像素 */
+            position: absolute;                                             /* 设置绝对定位，相对于父元素 .box 定位 */
+            top: 3px;                                                       /* 距离父元素顶部3像素 */
+            right: 2px;                                                     /* 距离父元素右侧2像素 */
+            background-image: url(delete.gif);                              /* 设置背景图片为 delete.gif（关闭图标） */
+            cursor: pointer;                                                /* 设置鼠标悬停时为手型指针，表示可点击 */
+        }                                                                   /* box span 样式定义结束 */
+    </style>                                                         
+</head>                                                                     <!-- 头部区域结束 -->
+<body>                                                                      <!-- 页面主体区域开始 -->
+    <script type="text/javascript">                                         // JavaScript脚本开始
+        function openWin(){                                                 // 定义 openWin 函数，用于打开对话框
+            var box = document.getElementById('box');                       // 通过ID "box" 获取对话框元素
+            box.style.display = 'block';                                    // 将对话框的 display 属性设置为 block，使其显示
+        }                                                                   // openWin 函数定义结束
+        function closeWin(){                                                // 定义 closeWin 函数，用于关闭对话框
+            var box = document.getElementById('box');                       // 通过ID "box" 获取对话框元素
+            box.style.display = 'none';                                     // 将对话框的 display 属性设置为 none，使其隐藏
+        }                                                                   // closeWin 函数定义结束
+    </script>                                                        
+    <a href="javascript:void(0)" onclick="openWin()">打开图片对话框</a>      <!-- 创建超链接，点击时调用 openWin 函数打开对话框 -->
+    <div id="box" class="box">                                              <!-- 创建对话框容器，ID为 box，应用 box 样式，初始为隐藏状态 -->
+        <span onclick="closeWin()"></span>                                  <!-- 创建关闭按钮（span元素），点击时调用 closeWin 函数关闭对话框 -->
+        <img src="/C10/face.png">                                           <!-- 显示图片，图片路径为 /C10/face.png -->
+    </div>                                                                  <!-- 对话框容器结束 -->
+</body>                                                                     <!-- 页面主体区域结束 -->
+</html>                                                                     <!-- 整个HTML文档结束 -->

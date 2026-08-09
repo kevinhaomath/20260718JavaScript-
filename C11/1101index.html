@@ -1,0 +1,20 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                     <!-- 声明页面语言为英语 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>访问指定节点</title>                                       <!-- 设置页面标题，显示在浏览器标签页上 -->
+</head>                                                              <!-- 头部区域结束 -->
+<body id="b1">                                                       <!-- 页面主体区域开始，设置ID为 "b1"，用于JavaScript获取该元素 -->
+    <h3>三号标题</h3>                                                <!-- 三级标题标签 -->
+    <b>加粗内容</b>                                                  <!-- 加粗文本标签 -->
+    <script type="text/javascript">                                 
+        var by = document.getElementById("b1");                      // 通过ID "b1" 获取body元素对象
+        var str;                                                     // 声明字符串变量 str，用于存储节点信息
+        str = "节点名称：" + by.nodeName + "\n";                      // 获取节点名称（标签名），添加到字符串中，\n表示换行
+        str += "节点名称：" + by.nodeType + "\n";                     // 获取节点类型（数字表示），添加到字符串中
+        str += "节点值：" + by.nodeValue + "\n";                      // 获取节点值（元素节点通常为null），添加到字符串中
+        alert(str);                                                  // 使用弹窗显示节点信息
+    </script>                                                        
+</body>                                                              <!-- 页面主体区域结束 -->
+</html>                                                              <!-- 整个HTML文档结束 -->

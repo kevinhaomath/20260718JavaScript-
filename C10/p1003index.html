@@ -1,0 +1,27 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                     <!-- 声明页面语言为英语 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>Document</title>                                          <!-- 设置页面标题，显示在浏览器标签页上 -->
+<script type="text/javascript">
+var i = 0;                                                           // 定义计数器变量 i，用于追踪当前要显示的图片索引，初始为0
+function addPic(){                                                   // 定义 addPic 函数，当按钮被点击时执行
+    var imgArr = new Array("5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg"); // 创建图片数组，存储6张图片的文件名
+    var img = document.createElement("img");                         // 创建一个新的 <img> 元素，用于显示图片
+    img.src = "/C10/" + imgArr[i];                                   // 根据索引 i 拼接图片路径，赋值给 img 的 src 属性
+    img.style.margin = "5px";                                        // 设置图片外边距为5像素，使图片之间保持间距
+    if(i < imgArr.length){                                           // 判断索引 i 是否小于数组长度（防止越界）
+        document.getElementById("show").appendChild(img);            // 通过ID "show" 找到 <p> 元素，将新创建的 <img> 添加为其子节点
+    }                                                                // if 条件判断结束
+    i++;                                                             // 计数器 i 自增1，以便下一次点击时显示下一张图片
+}                                                                    // addPic 函数定义结束
+</script>
+</head>                                                              <!-- 头部区域结束 -->
+<body>                                                               <!-- 页面主体区域开始 -->
+    <form name="form1">                                              <!-- 创建表单，用于包含按钮等交互元素 -->
+        <input type="button" name="btn1" value="添加用户头像" onclick="addPic()"> <!-- 创建按钮，点击时触发 addPic 函数 -->
+    </form>                                                          <!-- 表单结束 -->
+    <p id="show"></p>                                                <!-- 创建段落容器，ID为 "show"，用于动态显示添加的图片 -->
+</body>                                                              <!-- 页面主体区域结束 -->
+</html>                                                              <!-- 整个HTML文档结束 -->

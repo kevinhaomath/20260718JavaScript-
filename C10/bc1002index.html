@@ -1,0 +1,21 @@
+<!DOCTYPE html>                                                                     <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                                    <!-- 声明页面语言为英语 -->
+<head>                                                                              <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                                          <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">          <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>Document</title>                                                         <!-- 设置页面标题，显示在浏览器标签页上 -->
+</head>                                                                             <!-- 头部区域结束 -->
+<body>                                                                              <!-- 页面主体区域开始 -->
+    <script type="text/javascript">                                                 // JavaScript脚本开始
+        var url = document.URL;                                                     // 获取当前页面的完整URL地址
+        var position = 0;                                                           // 初始化位置变量，用于存储路径分隔符的位置
+        if(url.indexOf("\\") != -1){                                                // 判断URL中是否包含反斜杠 "\"（Windows路径格式）
+            position = url.lastIndexOf("\\");                                       // 如果包含反斜杠，则获取最后一个反斜杠的位置
+        }else{                                                                      // 如果不包含反斜杠
+            position = url.lastIndexOf("/");                                        // 则获取最后一个正斜杠 "/" 的位置（Unix/Linux/Web路径格式）
+        }                                                                           // if-else 条件判断结束
+        var filename = url.substr(position + 1);                                    // 从最后一个分隔符的下一个位置开始截取，获取文件名部分
+        alert("当前文档的文件名称：" + filename);                                     // 使用弹窗显示当前文档的文件名
+    </script>                                                                       
+</body>                                                                             <!-- 页面主体区域结束 -->
+</html>                                                                             <!-- 整个HTML文档结束 -->

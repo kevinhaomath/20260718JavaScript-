@@ -1,0 +1,20 @@
+<!DOCTYPE html>                                                                 <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                                <!-- 声明页面语言为英语 -->
+<head>                                                                          <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                                      <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">      <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>Document</title>                                                     <!-- 设置页面标题，显示在浏览器标签页上 -->
+</head>                                                                         <!-- 头部区域结束 -->
+<body style="background-color: #FFCCFF; color: #000000;">                   <!-- 页面主体区域开始，设置初始背景色为粉色，文字颜色为黑色 -->
+    <script type="text/javascript">                                             // JavaScript脚本开始
+        function change(){                                                      // 定义 change 函数，用于交换前景色和背景色
+            var fgcolor = document.body.style.color;                            // 获取当前页面的文字颜色（前景色）
+            var bgcolor = document.body.style.backgroundColor;                  // 获取当前页面的背景颜色
+            document.body.style.backgroundColor = fgcolor;                      // 将文字颜色设置为新的背景色（颜色互换）
+            document.body.style.color = bgcolor;                                // 将背景颜色设置为新的文字色（颜色互换）
+        }                                                                       // change 函数定义结束
+    </script>                                                                   
+    明日科技出品必属佳品                                                         <!-- 页面显示的文本内容 -->
+    <input type="button" value="交互颜色" name="btn" onclick="change()">        <!-- 创建按钮，点击时触发 change 函数，实现颜色互换 -->
+</body>                                                                         <!-- 页面主体区域结束 -->
+</html>                                                                         <!-- 整个HTML文档结束 -->

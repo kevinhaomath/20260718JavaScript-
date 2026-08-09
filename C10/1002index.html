@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态标题栏</title>
+</head>
+<body>
+<img src="个人主页主页.jpg" alt="">
+<script type="text/javascript">
+var n=0;
+function title(){
+    n++;
+    if(n==3) {n=1}
+    if (n==1) {document.title='☆★动态标题栏★☆'}
+    if (n==2) {document.title='★☆个人主页☆★'}
+    setTimeout("title()",1000);
+}
+title();
+
+</script>
+</body>
+</html>
