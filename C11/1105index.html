@@ -1,0 +1,25 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                     <!-- 声明页面语言为英语 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>创建多个节点2</title>                                      <!-- 设置页面标题，显示在浏览器标签页上 -->
+</head>                                                              <!-- 头部区域结束 -->
+<body onload="dc()">                                                 <!-- 页面主体区域开始，页面加载完成后自动执行 dc 函数 -->
+    <script type="text/javascript">
+        function dc(){                                               // 定义 dc 函数，用于批量创建节点
+            var aText = ["第一个节点","第二个节点","第三个节点","第四个节点","第五个节点","第六个节点"]; // 创建数组，存储6个文本内容
+            var cdf = document.createDocumentFragment();             // 创建文档碎片（DocumentFragment），用于临时存放节点
+            for(var i = 0; i < aText.length; i++){                   // for 循环，遍历数组中的每一个元素
+                var ce = document.createElement("b");                // 创建 <b> 加粗元素
+                var cb = document.createElement("br");               // 创建 <br> 换行元素
+                var cText = document.createTextNode(aText[i]);       // 根据数组当前元素创建文本节点
+                ce.appendChild(cText);                               // 将文本节点添加到 <b> 元素中
+                cdf.appendChild(ce);                                 // 将 <b> 元素添加到文档碎片中
+                cdf.appendChild(cb);                                 // 将 <br> 换行元素添加到文档碎片中
+            }                                                        // for 循环结束
+            document.body.appendChild(cdf);                          // 将文档碎片中的所有节点一次性添加到页面 body 中
+        }                                                            // dc 函数定义结束
+    </script>
+</body>                                                              <!-- 页面主体区域结束 -->
+</html>                                                              <!-- 整个HTML文档结束 -->

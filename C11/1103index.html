@@ -1,0 +1,54 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                     <!-- 声明页面语言为英语 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>补全古诗最后一句</title>                                   <!-- 设置页面标题，显示在浏览器标签页上 -->
+    <style type="text/css">                                          /* 内部CSS样式定义开始 */
+        #poemDivP{                                                   /* 定义ID为 poemDivP 的样式（页面中未使用，可能是预留样式） */
+            width: 300px;                                            /* 设置宽度为300像素 */
+            height: 180px;                                           /* 设置高度为180像素 */
+            background: url(poem.png);                               /* 设置背景图片为 poem.png */
+            font-weight: bolder;                                     /* 设置字体加粗 */
+        }                                                            /* poemDivP 样式定义结束 */
+        .poemtitle{                                                  /* 定义类名为 poemtitle 的样式，用于古诗标题 */
+            height: 50px;                                            /* 设置高度为50像素 */
+            line-height: 120px;                                      /* 设置行高为120像素，使文字垂直居中偏移 */
+            font-size: 24px;                                         /* 设置字体大小为24像素 */
+            color: #0000FF;                                          /* 设置文字颜色为蓝色 */
+        }                                                            /* poemtitle 样式定义结束 */
+        .poem{                                                       /* 定义类名为 poem 的样式，用于古诗每一句 */
+            margin: 0 auto;                                          /* 设置上下边距为0，左右自动居中 */
+            margin-left: 100px;                                      /* 设置左外边距为100像素，实现缩进效果 */
+            height: 30px;                                            /* 设置高度为30像素 */
+            line-height: 30px;                                       /* 设置行高为30像素，使文字垂直居中 */
+            color: #0000FF;                                          /* 设置文字颜色为蓝色 */
+            font-size: 18px;                                         /* 设置字体大小为18像素 */
+        }                                                            /* poem 样式定义结束 */
+    </style>                                                         
+</head>                                                              <!-- 头部区域结束 -->
+<body>                                                               <!-- 页面主体区域开始 -->
+    <script type="text/javascript">
+        function completePoem(){                                     // 定义 completePoem 函数，用于添加古诗最后一句
+            var div = document.createElement('div');                 // 创建一个新的 div 元素
+            div.className = 'poem';                                  // 设置新 div 的 class 为 poem，应用对应的样式
+            var last = myform.last.value;                            // 获取表单中输入框的值（用户填写的最后一句）
+            txt = document.createTextNode(last);                     // 创建文本节点，内容为用户输入的文字
+            div.appendChild(txt);                                    // 将文本节点添加到 div 中
+            document.getElementById('poemDiv').appendChild(div);     // 通过ID "poemDiv" 找到容器，将新 div 添加为其子节点
+        }                                                            // completePoem 函数定义结束
+    </script>
+    <div id="poemDiv">                                               <!-- 古诗容器，ID为 poemDiv，用于显示所有诗句 -->
+        <div class="poemtitle">春晓</div>                            <!-- 古诗标题，应用 poemtitle 样式 -->
+        <div class="poem">春眠不觉晓</div>                           <!-- 第一句，应用 poem 样式 -->
+        <div class="poem">处处闻啼鸟</div>                           <!-- 第二句，应用 poem 样式 -->
+        <div class="poem">夜来风雨声</div>                           <!-- 第三句，应用 poem 样式 -->
+    </div>                                                           <!-- 古诗容器结束 -->
+    <p>                                                              <!-- 段落标签，包裹表单 -->
+        <form name="myform">                                         <!-- 创建表单，名称为 myform，用于用户输入 -->
+            请输入最后一句：<input type="text" name="last">            <!-- 文本输入框，名称为 last，用于输入诗句 -->
+            <input type="button" value="添加" onclick="completePoem()"> <!-- 按钮，点击时触发 completePoem 函数 -->
+        </form>                                                      <!-- 表单结束 -->
+    </p>                                                             <!-- 段落结束 -->
+</body>                                                              <!-- 页面主体区域结束 -->
+</html>                                                              <!-- 整个HTML文档结束 -->

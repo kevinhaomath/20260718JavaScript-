@@ -1,0 +1,33 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                     <!-- 声明页面语言为英语 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>复制下拉菜单</title>                                       <!-- 设置页面标题，显示在浏览器标签页上 -->
+<script type="text/javascript">
+    function AddRow(b1){                                             // 定义 AddRow 函数，参数 b1 控制是否深度复制（true为深度复制，false为浅复制）
+        var se1 = document.getElementById("shopType");               // 通过 ID "shopType" 获取原始下拉列表元素
+        var newSelect = se1.cloneNode(b1);                           // 克隆下拉列表节点，b1 为 true 时深度克隆（包含子节点），false 时仅克隆当前节点
+        var b = document.createElement("br");                        // 创建 <br> 换行元素
+        di.appendChild(newSelect);                                   // 将克隆的下拉列表添加到 ID 为 "di" 的容器中
+        di.appendChild(b);                                           // 将换行元素添加到容器中，实现换行效果
+    }                                                                // AddRow 函数定义结束
+</script>
+</head>                                                              <!-- 头部区域结束 -->
+<body>                                                               <!-- 页面主体区域开始 -->
+    <form>                                                           <!-- 创建表单 -->
+        <hr>                                                         <!-- 水平分割线 -->
+        <select name="shopType" id="shopType">                       <!-- 下拉列表，ID 为 shopType，用于被克隆 -->
+            <option value="%">请选择类型</option>                      <!-- 默认选项，值为 % -->
+            <option value="0">数码电子</option>                        <!-- 选项，值为 0 -->
+            <option value="1">家用电器</option>                        <!-- 选项，值为 1 -->
+            <option value="2">床上用品</option>                        <!-- 选项，值为 2 -->
+        </select>                                                    <!-- 下拉列表结束 -->
+        <hr>                                                         <!-- 水平分割线 -->
+        <div id="di">                                                <!-- 容器，ID 为 di，用于存放克隆生成的下拉列表 -->
+            <input type="button" value="复制" onclick="AddRow(false)"> <!-- 按钮，点击时进行浅复制（只复制当前节点，不复制子节点） -->
+            <input type="button" value="深度复制" onclick="AddRow(true)"> <!-- 按钮，点击时进行深度复制（复制当前节点及其所有子节点） -->
+        </div>                                                       <!-- 容器结束 -->
+    </form>                                                          <!-- 表单结束 -->
+</body>                                                              <!-- 页面主体区域结束 -->
+</html>                                                              <!-- 整个HTML文档结束 -->
