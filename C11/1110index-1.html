@@ -1,0 +1,254 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="zh-CN">                                                  <!-- 声明页面语言为简体中文 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>圆形钟表</title>                                           <!-- 设置页面标题，显示在浏览器标签页上 -->
+    <style>                                                          /* 内部CSS样式定义开始 */
+        /* ===== 页面整体样式 ===== */
+        * {                                                          /* 通配符选择器，重置所有元素默认样式 */
+            margin: 0;                                               /* 清除所有元素的外边距 */
+            padding: 0;                                              /* 清除所有元素的内边距 */
+            box-sizing: border-box;                                  /* 设置盒模型为 border-box，宽高包含边框和内边距 */
+        }                                                            /* 通配符样式定义结束 */
+
+        body {                                                       /* 定义 body 页面主体样式 */
+            display: flex;                                           /* 使用弹性布局 */
+            justify-content: center;                                 /* 主轴居中（水平居中） */
+            align-items: center;                                     /* 交叉轴居中（垂直居中） */
+            min-height: 100vh;                                       /* 最小高度为视口高度的100% */
+            background: linear-gradient(135deg, #0a0a1a, #1a1a3e, #0a0a2a); /* 135度渐变背景，深蓝色系 */
+            font-family: 'Arial', sans-serif;                        /* 设置字体 */
+            user-select: none;                                       /* 禁止用户选中页面文本 */
+        }                                                            /* body 样式定义结束 */
+
+        /* ===== 钟表容器 ===== */
+        .container {                                                 /* 定义类名为 container 的样式，用于钟表容器 */
+            display: flex;                                           /* 使用弹性布局 */
+            flex-direction: column;                                  /* 设置主轴方向为垂直（列排列） */
+            align-items: center;                                     /* 交叉轴居中（水平居中） */
+            gap: 25px;                                               /* 子元素之间的间距为25像素 */
+        }                                                            /* container 样式定义结束 */
+
+        /* ===== Canvas 画布 ===== */
+        #clock {                                                     /* 定义 ID 为 clock 的样式，用于 Canvas 画布 */
+            border-radius: 50%;                                      /* 设置圆角为50%，形成圆形 */
+            background: radial-gradient(circle at 30% 30%, #2a2a5a, #0f0f2a); /* 径向渐变背景，模拟表盘质感 */
+            box-shadow:                                              /* 设置阴影，增加立体感 */
+                0 0 40px rgba(100, 150, 255, 0.15),                  /* 外发光效果 */
+                0 0 80px rgba(100, 150, 255, 0.08),                  /* 外发光扩散 */
+                inset 0 0 60px rgba(0, 0, 0, 0.6),                   /* 内阴影，模拟凹陷效果 */
+                inset 0 0 20px rgba(255, 255, 255, 0.05);            /* 内高光，模拟玻璃质感 */
+            border: 6px solid #3a3a6a;                               /* 边框，颜色为深蓝色 */
+            display: block;                                          /* 块级显示 */
+            width: 420px;                                            /* 宽度420像素 */
+            height: 420px;                                           /* 高度420像素 */
+        }                                                            /* clock 样式定义结束 */
+
+        /* ===== 日期显示 ===== */
+        .date-display {                                              /* 定义类名为 date-display 的样式，用于日期显示区域 */
+            color: #88ddff;                                          /* 文字颜色为亮蓝色 */
+            font-size: 22px;                                         /* 字体大小22像素 */
+            letter-spacing: 3px;                                     /* 字符间距3像素 */
+            text-shadow: 0 0 20px rgba(100, 200, 255, 0.2);          /* 文字发光效果 */
+            padding: 10px 30px;                                      /* 内边距上下10像素，左右30像素 */
+            background: rgba(255, 255, 255, 0.05);                   /* 半透明白色背景 */
+            border-radius: 30px;                                     /* 圆角30像素 */
+            border: 1px solid rgba(255, 255, 255, 0.08);             /* 半透明白色边框 */
+            backdrop-filter: blur(10px);                             /* 背景模糊效果，毛玻璃效果 */
+        }                                                            /* date-display 样式定义结束 */
+
+        /* ===== 响应式适配 ===== */
+        @media (max-width: 500px) {                                  /* 媒体查询，当屏幕宽度小于等于500像素时生效 */
+            #clock {                                                 /* 针对 Canvas 画布 */
+                width: 320px;                                        /* 宽度调整为320像素 */
+                height: 320px;                                       /* 高度调整为320像素 */
+            }                                                        /* clock 响应式样式结束 */
+            .date-display {                                          /* 针对日期显示区域 */
+                font-size: 16px;                                     /* 字体大小调整为16像素 */
+                padding: 8px 20px;                                   /* 内边距调整为上下8像素，左右20像素 */
+            }                                                        /* date-display 响应式样式结束 */
+        }                                                            /* 媒体查询结束 */
+    </style>                                                         
+</head>                                                              <!-- 头部区域结束 -->
+<body>                                                               <!-- 页面主体区域开始 -->
+
+    <div class="container">                                          <!-- 钟表容器 -->
+        <!-- Canvas 画布 -->
+        <canvas id="clock" width="600" height="600"></canvas>        <!-- Canvas 画布，宽高600像素，ID为 clock -->
+        <!-- 日期显示 -->
+        <div class="date-display" id="dateDisplay">📅 加载中...</div> <!-- 日期显示区域，ID为 dateDisplay -->
+    </div>                                                           <!-- 容器结束 -->
+
+    <script>
+        // ================================================================
+        //  1. 获取 Canvas 和 2D 上下文
+        // ================================================================
+        var canvas = document.getElementById('clock');               // 通过 ID "clock" 获取 Canvas 元素
+        var ctx = canvas.getContext('2d');                           // 获取 Canvas 的 2D 绘图上下文
+        var radius = canvas.width / 2;                               // 计算半径 = 300（画布宽度的一半）
+        var centerX = radius;                                        // 圆心 X 坐标
+        var centerY = radius;                                        // 圆心 Y 坐标
+
+        // ================================================================
+        //  2. 日期显示函数
+        // ================================================================
+        function updateDate() {                                      // 定义 updateDate 函数，用于更新日期显示
+            var now = new Date();                                    // 创建 Date 对象，获取当前日期和时间
+            var year = now.getFullYear();                            // 获取当前年份（四位数）
+            var month = now.getMonth() + 1;                          // 获取当前月份（0-11），加1转为实际月份（1-12）
+            var day = now.getDate();                                 // 获取当前日期（1-31）
+            var weekdays = ['日', '一', '二', '三', '四', '五', '六']; // 星期数组，索引 0-6 对应星期日到星期六
+            var weekday = weekdays[now.getDay()];                    // 根据 getDay() 返回的数字（0-6）获取中文星期
+            var dateStr = year + '年' + month + '月' + day + '日  星期' + weekday; // 拼接日期字符串
+            document.getElementById('dateDisplay').textContent = '📅  ' + dateStr; // 更新日期显示区域的内容
+        }                                                            // updateDate 函数定义结束
+
+        // ================================================================
+        //  3. 绘制钟表核心函数
+        // ================================================================
+        function drawClock() {                                       // 定义 drawClock 函数，绘制完整的圆形钟表
+            var now = new Date();                                    // 创建 Date 对象，获取当前时间
+            var hours = now.getHours();                              // 获取当前小时（0-23）
+            var minutes = now.getMinutes();                          // 获取当前分钟（0-59）
+            var seconds = now.getSeconds();                          // 获取当前秒数（0-59）
+
+            // ---- 3.1 清空画布 ----
+            ctx.clearRect(0, 0, canvas.width, canvas.height);        // 清除画布所有内容，准备重新绘制
+
+            // ---- 3.2 绘制表盘背景（径向渐变） ----
+            var grad = ctx.createRadialGradient(                     // 创建径向渐变
+                centerX - 60, centerY - 60, 20,                     // 起始圆（偏移左上，半径20）
+                centerX, centerY, radius - 10                        // 结束圆（圆心，半径290）
+            );
+            grad.addColorStop(0, '#3a3a7a');                         // 渐变起点颜色（较亮紫色）
+            grad.addColorStop(0.6, '#222255');                       // 渐变中间颜色（中蓝色）
+            grad.addColorStop(1, '#0f0f2a');                         // 渐变终点颜色（深蓝色）
+            ctx.beginPath();                                         // 开始路径
+            ctx.arc(centerX, centerY, radius - 10, 0, 2 * Math.PI); // 绘制圆形（半径290）
+            ctx.fillStyle = grad;                                    // 设置填充样式为渐变
+            ctx.fill();                                              // 填充圆形
+
+            // ---- 3.3 绘制外圈装饰 ----
+            ctx.beginPath();                                         // 开始路径
+            ctx.arc(centerX, centerY, radius - 8, 0, 2 * Math.PI);  // 绘制外圈圆（半径292）
+            ctx.strokeStyle = '#4a4a8a';                             // 描边颜色
+            ctx.lineWidth = 2;                                       // 线条宽度
+            ctx.stroke();                                            // 描边
+
+            // ---- 3.4 绘制 60 个刻度线 ----
+            for (var i = 0; i < 60; i++) {                           // 循环60次，绘制秒盘刻度
+                var angle = i * 6 * Math.PI / 180;                   // 计算当前刻度角度（6度一个）
+                var isHour = (i % 5 === 0);                          // 判断是否为整点刻度（每5个为大刻度）
+                var innerR = isHour ? radius - 30 : radius - 20;     // 刻度内半径（整点较短，非整点较长）
+                var outerR = isHour ? radius - 12 : radius - 16;     // 刻度外半径（整点较长，非整点较短）
+                var x1 = centerX + innerR * Math.sin(angle);         // 计算刻度起点 X 坐标
+                var y1 = centerY - innerR * Math.cos(angle);         // 计算刻度起点 Y 坐标
+                var x2 = centerX + outerR * Math.sin(angle);         // 计算刻度终点 X 坐标
+                var y2 = centerY - outerR * Math.cos(angle);         // 计算刻度终点 Y 坐标
+                ctx.beginPath();                                     // 开始路径
+                ctx.moveTo(x1, y1);                                  // 移动到起点
+                ctx.lineTo(x2, y2);                                  // 画线到终点
+                ctx.strokeStyle = isHour ? '#88ddff' : '#4477aa';    // 整点刻度亮蓝色，非整点淡蓝色
+                ctx.lineWidth = isHour ? 4 : 2;                      // 整点刻度较粗，非整点较细
+                ctx.stroke();                                        // 描边
+            }                                                        // 刻度循环结束
+
+            // ---- 3.5 绘制 1~12 数字 ----
+            ctx.textAlign = 'center';                                // 文字水平居中
+            ctx.textBaseline = 'middle';                             // 文字垂直居中
+            ctx.fillStyle = '#88ddff';                               // 文字颜色（亮蓝色）
+            ctx.font = 'bold 26px Arial';                            // 字体样式（粗体，26像素）
+            for (var i = 1; i <= 12; i++) {                          // 循环12次，绘制数字 1-12
+                var angle = i * 30 * Math.PI / 180;                  // 计算当前数字的角度（30度一个）
+                var numR = radius - 45;                              // 数字距离圆心的距离
+                var x = centerX + numR * Math.sin(angle);            // 计算数字 X 坐标
+                var y = centerY - numR * Math.cos(angle);            // 计算数字 Y 坐标
+                ctx.fillText(String(i), x, y);                       // 在指定位置绘制数字
+            }                                                        // 数字循环结束
+
+            // ---- 3.6 绘制品牌文字 ----
+            ctx.fillStyle = '#6688aa';                               // 文字颜色
+            ctx.font = '12px Arial';                                 // 字体样式
+            ctx.fillText('✦  C L O C K  ✦', centerX, centerY + 58); // 在钟表中心下方绘制装饰文字
+
+            // ---- 3.7 绘制时针 ----
+            var hourAngle = ((hours % 12) + minutes / 60) * 30 * Math.PI / 180; // 计算时针角度（考虑分针偏移）
+            var hourLen = radius - 65;                               // 时针长度
+            var hx = centerX + hourLen * Math.sin(hourAngle);        // 时针终点 X 坐标
+            var hy = centerY - hourLen * Math.cos(hourAngle);        // 时针终点 Y 坐标
+            ctx.beginPath();                                         // 开始路径
+            ctx.moveTo(centerX, centerY);                            // 移动到圆心
+            ctx.lineTo(hx, hy);                                      // 画线到时针终点
+            ctx.strokeStyle = '#ffaa44';                             // 时针颜色（金色）
+            ctx.lineWidth = 8;                                       // 时针宽度
+            ctx.lineCap = 'round';                                   // 线条末端为圆形
+            ctx.stroke();                                            // 描边
+
+            // ---- 3.8 绘制分针 ----
+            var minAngle = (minutes + seconds / 60) * 6 * Math.PI / 180; // 计算分针角度（考虑秒针偏移）
+            var minLen = radius - 50;                                // 分针长度
+            var mx = centerX + minLen * Math.sin(minAngle);          // 分针终点 X 坐标
+            var my = centerY - minLen * Math.cos(minAngle);          // 分针终点 Y 坐标
+            ctx.beginPath();                                         // 开始路径
+            ctx.moveTo(centerX, centerY);                            // 移动到圆心
+            ctx.lineTo(mx, my);                                      // 画线到分针终点
+            ctx.strokeStyle = '#88ddff';                             // 分针颜色（亮蓝色）
+            ctx.lineWidth = 5;                                       // 分针宽度
+            ctx.lineCap = 'round';                                   // 线条末端为圆形
+            ctx.stroke();                                            // 描边
+
+            // ---- 3.9 绘制秒针 ----
+            var secAngle = seconds * 6 * Math.PI / 180;              // 计算秒针角度
+            var secLen = radius - 30;                                // 秒针长度
+            var sx = centerX + secLen * Math.sin(secAngle);          // 秒针终点 X 坐标
+            var sy = centerY - secLen * Math.cos(secAngle);          // 秒针终点 Y 坐标
+            ctx.beginPath();                                         // 开始路径
+            ctx.moveTo(centerX, centerY);                            // 移动到圆心
+            ctx.lineTo(sx, sy);                                      // 画线到秒针终点
+            ctx.strokeStyle = '#ff4466';                             // 秒针颜色（红色）
+            ctx.lineWidth = 2.5;                                     // 秒针宽度
+            ctx.lineCap = 'round';                                   // 线条末端为圆形
+            ctx.stroke();                                            // 描边
+
+            // ---- 3.10 绘制秒针尾部（平衡端） ----
+            var tailLen = 22;                                        // 尾部长度
+            var tx = centerX - tailLen * Math.sin(secAngle);         // 尾部终点 X 坐标
+            var ty = centerY + tailLen * Math.cos(secAngle);         // 尾部终点 Y 坐标
+            ctx.beginPath();                                         // 开始路径
+            ctx.moveTo(centerX, centerY);                            // 移动到圆心
+            ctx.lineTo(tx, ty);                                      // 画线到尾部终点
+            ctx.strokeStyle = '#ff4466';                             // 尾部颜色（红色）
+            ctx.lineWidth = 2.5;                                     // 尾部宽度
+            ctx.lineCap = 'round';                                   // 线条末端为圆形
+            ctx.stroke();                                            // 描边
+
+            // ---- 3.11 绘制中心装饰圆 ----
+            ctx.beginPath();                                         // 开始路径
+            ctx.arc(centerX, centerY, 10, 0, 2 * Math.PI);           // 绘制中心大圆
+            ctx.fillStyle = '#88ddff';                               // 填充颜色（亮蓝色）
+            ctx.fill();                                              // 填充
+
+            ctx.beginPath();                                         // 开始路径
+            ctx.arc(centerX, centerY, 5, 0, 2 * Math.PI);            // 绘制中心小圆
+            ctx.fillStyle = '#ffaa44';                               // 填充颜色（金色）
+            ctx.fill();                                              // 填充
+        }                                                            // drawClock 函数定义结束
+
+        // ================================================================
+        //  4. 主刷新函数
+        // ================================================================
+        function refresh() {                                         // 定义 refresh 函数，更新日期和钟表
+            updateDate();                                            // 调用 updateDate 函数更新日期
+            drawClock();                                             // 调用 drawClock 函数重绘钟表
+        }                                                            // refresh 函数定义结束
+
+        // ================================================================
+        //  5. 启动定时器（每秒刷新）
+        // ================================================================
+        refresh();                                                   // 立即执行一次，显示当前时间
+        setInterval(refresh, 1000);                                  // 每隔 1000 毫秒（1秒）执行一次 refresh，实现动态更新
+    </script>
+
+</body>                                                              <!-- 页面主体区域结束 -->
+</html>                                                              <!-- 整个HTML文档结束 -->

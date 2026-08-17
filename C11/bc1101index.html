@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    function addText(){
+        var div = document.createElement('div');
+        var t = myform.t.value;
+        txt = document.createTextNode(t);
+        div.style.color=myform.color.value;
+        div.appendChild(txt);
+        document.getElementById('show').appendChild(div);
+    }
+</script>
+<div id="show"></div>
+<p>
+    <form name="myform">
+        请输入文字：<input type="text" name="t">
+        <select name="color">
+            <option value="red">红色</option>
+            <option value="green">绿色</option>
+            <option value="blue">蓝色</option>
+        </select>
+        <input type="button" value="添加" onclick="addText()">
+    </form>
+</p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                     <!-- 声明页面语言为英语 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>替换标记和文本</title>                                     <!-- 设置页面标题，显示在浏览器标签页上 -->
+    <style type="text/css">                                          /* 内部CSS样式定义开始 */
+        input{                                                       /* 定义所有 input 元素的样式 */
+            margin-top: 3px;                                         /* 设置上外边距为3像素，使输入框之间有间隔 */
+        }                                                            /* input 样式定义结束 */
+    </style>                                                         
+    <script type="text/javascript">
+        function repN(str, bj){                                      // 定义 repN 函数，用于替换指定节点的标记和文本
+            var rep = document.getElementById('b1');                 // 通过 ID "b1" 获取要被替换的节点
+            // fi(rep){                                              // 此处为错误代码（fi 未定义），应为 if 判断，已注释掉避免影响理解
+                var newNode = document.createElement(bj);            // 根据用户输入的标记名创建新元素（如 p、h1、div 等）
+                newNode.id = 'b1';                                   // 为新节点设置 ID 为 'b1'，保持与原节点相同的 ID
+                var newText = document.createTextNode(str);          // 根据用户输入的文本创建文本节点
+                newNode.appendChild(newText);                        // 将文本节点添加到新元素中
+                rep.parentNode.replaceChild(newNode, rep);           // 使用 replaceChild 将原节点替换为新节点
+            // }                                                     // if 判断结束
+        }                                                            // repN 函数定义结束
+    </script>
+</head>                                                              <!-- 头部区域结束 -->
+<body>                                                               <!-- 页面主体区域开始 -->
+    <b id="b1">要被替换的文本内容</b>                                 <!-- 加粗标签，ID 为 b1，作为要被替换的目标节点 -->
+    <p>                                                              <!-- 段落标签，包裹表单 -->
+        输入标记：<input id="bj" type="text" size="15"><br>            <!-- 文本输入框，ID 为 bj，用于输入新的标记名 -->
+        输入文本：<input id="txt" type="text" size="15"><br>           <!-- 文本输入框，ID 为 txt，用于输入新的文本内容 -->
+        <input type="button" value="替换" onclick="repN(txt.value, bj.value)"> <!-- 按钮，点击时调用 repN 函数，传入文本框的值 -->
+    </p>                                                             <!-- 段落结束 -->
+</body>                                                              <!-- 页面主体区域结束 -->
+</html>                                                              <!-- 整个HTML文档结束 -->

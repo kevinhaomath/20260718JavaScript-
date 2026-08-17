@@ -1,0 +1,28 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                     <!-- 声明页面语言为英语 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>在页面的指定位置显示当前日期</title>                       <!-- 设置页面标题，显示在浏览器标签页上 -->
+    <script type="text/javascript">
+        function clockon(){                                          // 定义 clockon 函数，用于获取当前日期并显示在页面中
+            var now = new Date();                                    // 创建 Date 对象，获取当前日期和时间
+            var year = now.getFullYear();                            // 获取当前年份（四位数，如 2026）
+            var month = now.getMonth();                              // 获取当前月份（0-11，0 表示一月）
+            var date = now.getDate();                                // 获取当前日期（1-31）
+            var day = now.getDay();                                  // 获取当前星期几（0-6，0 表示星期日）
+            var week;                                                // 声明变量 week，用于存储中文星期名称
+            month = month + 1;                                       // 月份加 1，转换为实际月份（1-12）
+            var arr_week = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六"); // 创建星期数组，索引 0-6 对应星期日到星期六
+            week = arr_week[day];                                    // 根据 day 值从数组中获取对应的中文星期名称
+            time = year + "年" + month + "月" + date + "日" + week;   // 拼接日期字符串
+            var textTime = document.createTextNode(time);            // 根据日期字符串创建文本节点
+            document.getElementById("clock").appendChild(textTime);  // 通过 ID "clock" 获取容器，将文本节点添加为子节点
+        }                                                            // clockon 函数定义结束
+        window.onload = clockon;                                     // 页面加载完成后自动执行 clockon 函数
+    </script>
+</head>                                                              <!-- 头部区域结束 -->
+<body>                                                               <!-- 页面主体区域开始 -->
+    <div id="clock"> 当前日期：</div>                                 <!-- 容器，ID 为 clock，用于显示当前日期 -->
+</body>                                                              <!-- 页面主体区域结束 -->
+</html>                                                              <!-- 整个HTML文档结束 -->

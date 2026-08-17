@@ -1,0 +1,45 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                     <!-- 声明页面语言为英语 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>分时问候</title>                                           <!-- 设置页面标题，显示在浏览器标签页上 -->
+<script type="text/javascript">
+    function ShowTime(){                                             // 定义 ShowTime 函数，用于显示当前时间和问候语
+        var strgreet = "";                                           // 初始化问候语字符串为空
+        var datetime = new Date();                                   // 创建 Date 对象，获取当前日期和时间
+        var hour = datetime.getHours();                              // 获取当前小时（0-23）
+        var minu = datetime.getMinutes();                            // 获取当前分钟（0-59）
+        var seco = datetime.getSeconds();                            // 获取当前秒数（0-59）
+        strtime = hour + ":" + minu + ":" + seco + " ";              // 拼接时间字符串（时:分:秒）
+        
+        // ---- 根据小时判断问候语 ----
+        if(hour >= 0 && hour < 8){                                   // 如果时间是 00:00:00 到 07:59:59
+            strgreet = "早上好";                                      // 设置问候语为"早上好"
+        }                                                            // 第一个 if 判断结束
+        if(hour >= 8 && hour < 11){                                  // 如果时间是 08:00:00 到 10:59:59
+            strgreet = "上午好";                                      // 设置问候语为"上午好"
+        }                                                            // 第二个 if 判断结束
+        if(hour >= 11 && hour < 13){                                 // 如果时间是 11:00:00 到 12:59:59
+            strgreet = "中午好";                                      // 设置问候语为"中午好"
+        }                                                            // 第三个 if 判断结束
+        if(hour >= 13 && hour < 17){                                 // 如果时间是 13:00:00 到 16:59:59
+            strgreet = "下午好";                                      // 设置问候语为"下午好"
+        }                                                            // 第四个 if 判断结束
+        if(hour >= 17 && hour < 24){                                 // 如果时间是 17:00:00 到 23:59:59
+            strgreet = "晚上好";                                      // 设置问候语为"晚上好"
+        }                                                            // 第五个 if 判断结束
+
+        window.setTimeout("ShowTime()", 1000);                       // 设置定时器，每隔 1000 毫秒（1秒）递归调用自身，实现时间自动更新
+        document.getElementById("time").innerHTML = "现在是：<b>" + strtime + "</b>"; // 将时间显示到 ID 为 "time" 的元素中
+        document.getElementById("greet").innerHTML = "<b>" + strgreet + "</b>"; // 将问候语显示到 ID 为 "greet" 的元素中
+    }                                                                // ShowTime 函数定义结束
+
+    window.onload = ShowTime;                                        // 页面加载完成后自动执行 ShowTime 函数
+</script>
+</head>                                                              <!-- 头部区域结束 -->
+<body>                                                               <!-- 页面主体区域开始 -->
+    <div id="time">显示当前时间</div>                                 <!-- 容器，ID 为 time，用于显示当前时间 -->
+    <div id="greet">显示问候语</div>                                  <!-- 容器，ID 为 greet，用于显示问候语 -->
+</body>                                                              <!-- 页面主体区域结束 -->
+</html>                                                              <!-- 整个HTML文档结束 -->

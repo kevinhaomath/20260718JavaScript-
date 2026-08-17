@@ -1,0 +1,46 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                     <!-- 声明页面语言为英语 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>图片轮换</title>                                           <!-- 设置页面标题，显示在浏览器标签页上 -->
+    <style type="text/css">                                          /* 内部CSS样式定义开始 */
+        #tabs {                                                      /* 定义 ID 为 tabs 的样式，用于图片轮播容器 */
+            width: 1200px;                                           /* 设置容器宽度为1200像素 */
+            height: 320px;                                           /* 设置容器高度为320像素 */
+            overflow: hidden;                                        /* 超出容器的内容隐藏，防止图片溢出 */
+            float: left;                                             /* 设置左浮动，使容器靠左排列 */
+            position: relative;                                      /* 设置相对定位，为子元素绝对定位提供参考 */
+        }                                                            /* tabs 样式定义结束 */
+
+        #tabs > a:not(:first-child) {                                /* 选择 tabs 下除第一个以外的所有 a 标签 */
+            display: none;                                           /* 默认隐藏非第一张图片，只显示第一张 */
+        }                                                            /* 样式定义结束 */
+    </style>                                                         
+    <script type="text/javascript">
+        var len = document.getElementsByName("i");                   // 获取所有 name 属性为 "i" 的元素（即图片链接），存入数组
+        var pos = 0;                                                 // 定义位置变量 pos，用于追踪当前显示的图片索引，初始为0（第一张）
+
+        function changeimage() {                                     // 定义 changeimage 函数，用于切换图片
+            len[pos].style.display = "none";                         // 将当前显示的图片隐藏（display: none）
+            pos++;                                                   // 位置索引自增1，准备切换到下一张图片
+            if (pos == len.length) {                                 // 判断是否到达数组末尾（即最后一张图片之后）
+                pos = 0;                                             // 如果到达末尾，将索引重置为0，实现循环轮播
+            }                                                        // if 判断结束
+            len[pos].style.display = "block";                        // 显示下一张图片（display: block）
+        }                                                            // changeimage 函数定义结束
+
+        setInterval('changeimage()', 3000);                          // 设置定时器，每隔 3000 毫秒（3秒）执行一次 changeimage 函数，实现自动轮播
+    </script>
+</head>                                                              <!-- 头部区域结束 -->
+<body>                                                               <!-- 页面主体区域开始 -->
+    <div id="tabs">                                                  <!-- 图片轮播容器，ID 为 tabs -->
+        <a href="#" name="i">                                        <!-- 图片链接1，name 为 i，用于 JavaScript 获取 -->
+            <img src="/C11/13.png" width="100%" height="320" />      <!-- 第一张图片，宽度100%，高度320像素 -->
+        </a>                                                         <!-- 链接1结束 -->
+        <a href="#" name="i">                                        <!-- 图片链接2，name 为 i，用于 JavaScript 获取 -->
+            <img src="/C11/14.png" width="100%" height="320" />      <!-- 第二张图片，宽度100%，高度320像素 -->
+        </a>                                                         <!-- 链接2结束 -->
+    </div>                                                           <!-- 轮播容器结束 -->
+</body>                                                              <!-- 页面主体区域结束 -->
+</html>                                                              <!-- 整个HTML文档结束 -->

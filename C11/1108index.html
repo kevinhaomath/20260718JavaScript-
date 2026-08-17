@@ -1,0 +1,25 @@
+<!DOCTYPE html>                                                      <!-- 声明文档类型为HTML5 -->
+<html lang="en">                                                     <!-- 声明页面语言为英语 -->
+<head>                                                               <!-- 头部区域开始 -->
+    <meta charset="UTF-8">                                           <!-- 设置字符编码为UTF-8，支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，使页面在移动设备上自适应 -->
+    <title>删除节点</title>                                           <!-- 设置页面标题，显示在浏览器标签页上 -->
+<script type="text/javascript">
+    function delNode(){                                              // 定义 delNode 函数，用于删除容器中的最后一个子节点
+        var deleteN = document.getElementById('di');                 // 通过 ID "di" 获取容器元素
+        if(deleteN.hasChildNodes()){                                 // 判断容器是否包含子节点
+            deleteN.removeChild(deleteN.lastChild);                  // 删除容器中的最后一个子节点
+        }                                                            // if 条件判断结束
+    }                                                                // delNode 函数定义结束
+</script>
+</head>                                                              <!-- 头部区域结束 -->
+<body>                                                               <!-- 页面主体区域开始 -->
+    <h2>删除节点</h2>                                                <!-- 二级标题 -->
+    <div id="di">                                                    <!-- 容器，ID 为 di，包含三个 p 段落节点 -->
+        <p>少林派掌门空闻大师</p><p>武当派掌门张三丰</p><p>峨眉派掌门灭绝师太</p>
+    </div>                                                           <!-- 容器结束 -->
+    <form>                                                           <!-- 创建表单 -->
+        <input type="button" value="删除" onclick="delNode()">       <!-- 按钮，点击时触发 delNode 函数删除最后一个子节点 -->
+    </form>                                                          <!-- 表单结束 -->
+</body>                                                              <!-- 页面主体区域结束 -->
+</html>                                                              <!-- 整个HTML文档结束 -->
